@@ -1,4 +1,8 @@
-from src.channel import Channel
+import sys
+sys.path.append(r'C:\Users\Hp\PycharmProjects\section4hw1\youtube-analytics-project/src')
+from channel import Channel
+# такой усложненный импорт из-за того, что простое src.item мой пайчарм почему-то не видит
+
 
 if __name__ == '__main__':
     moscowpython = Channel('UC-OVMPlMA3-YCIeg4z5z23A')
@@ -7,7 +11,7 @@ if __name__ == '__main__':
     """
 {
   "kind": "youtube#channelListResponse",
-  "etag": "uAdmwT0aDhY9LmAzJzIafD6ATRw",
+  "etag": "H-pNprJMhplXi-NIAD9wFm1GCgQ",
   "pageInfo": {
     "totalResults": 1,
     "resultsPerPage": 5
@@ -15,7 +19,7 @@ if __name__ == '__main__':
   "items": [
     {
       "kind": "youtube#channel",
-      "etag": "cPh7A8SKcZxxs_UPCiBaXP1wNDk",
+      "etag": "SNKCVH4AEdoqn_JbHJmmNTFzmLg",
       "id": "UC-OVMPlMA3-YCIeg4z5z23A",
       "snippet": {
         "title": "MoscowPython",
@@ -46,13 +50,15 @@ if __name__ == '__main__':
         "country": "RU"
       },
       "statistics": {
-        "viewCount": "2303120",
-        "subscriberCount": "25900",
+        "viewCount": "2336446",
+        "subscriberCount": "26200",
         "hiddenSubscriberCount": false,
-        "videoCount": "685"
+        "videoCount": "689"
       }
     }
   ]
 }
-
     """
+# откорректировал докстринг, чтобы там была информация, которую выдает метод на момент выполнения задания
+# не совсем понятно, что тестировать, потому что данные постоянно меняются
+# только если выделить какие-то статические данные и проверять их
