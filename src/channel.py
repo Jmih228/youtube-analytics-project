@@ -15,9 +15,5 @@ class Channel:
         api_key: str = os.getenv('YT_API_KEY')
 
         youtube = build('youtube', 'v3', developerKey=api_key)
-
-        def printj(dict_to_print: dict) -> None:
-            """Выводит словарь в json-подобном удобном формате с отступами"""
-            print(json.dumps(dict_to_print, indent=2, ensure_ascii=False))
-        # не уверен, стоит ли определять функцию прямо внутри метода, здесь сделаю так и надеюсь на вашу обратную связь
-        printj(youtube.channels().list(id=self.channel_id, part='snippet,statistics').execute())
+        channel = youtube.channels().list(id=self.channel_id, part='snippet,statistics').execute()
+        print(json.dumps(channel, indent=2, ensure_ascii=False))
