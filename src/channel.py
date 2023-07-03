@@ -6,14 +6,36 @@ from googleapiclient.discovery import build
 class Channel:
     """Класс для ютуб-канала"""
 
-    def __init__(self, channel_id: str) -> None:
+    def __init__(self, __channel_id: str) -> None:
         """Экземпляр инициализируется id канала. Дальше все данные будут подтягиваться по API."""
-        self.channel_id = channel_id
+        self.__channel_id = __channel_id
 
+        channel_info = Channel.get_service().channels().list(id=self.channel_id, part='snippet,statistics').execute()
+        json_format = json.loads(json.dumps((channel_info)))
+
+        self.title = json_format['items'][0]['snippet']['title']
+        self.description = json_format['items'][0]['snippet']['localized']['description']
+        self.url = f'youtube.com/channel/{__channel_id}'
+        self.subscribers = json_format['items'][0]['statistics']['subscriberCount']
+        self.video_count = json_format['items'][0]['statistics']['videoCount']
+        self.views_count = json_format['items'][0]['statistics']['viewCount']
+
+    @property
+    def channel_id(self):
+        return self.__channel_id
     def print_info(self) -> None:
         """Выводит в консоль информацию о канале."""
-        api_key: str = os.getenv('YT_API_KEY')
-
-        youtube = build('youtube', 'v3', developerKey=api_key)
-        channel = youtube.channels().list(id=self.channel_id, part='snippet,statistics').execute()
+        # откорректировал код этого метода с учетом нового класс метода get_service
+        channel = Channel.get_service().channels().list(id=self.channel_id, part='snippet,statistics').execute()
         print(json.dumps(channel, indent=2, ensure_ascii=False))
+
+    @classmethod
+    def get_service(cls):
+        api_key: str = os.getenv('YT_API_KEY')
+        return build('youtube', 'v3', developerKey=api_key)
+
+    def to_json(self,filename):
+        with open(filename, "a", encoding='utf-8') as channel_atributes:
+            print(json.dumps(self.__dict__), file=channel_atributes)
+# В атрибуте "description" закодированная строка, не успеваю разобраться в чем проблема :D
+# Прошу вашей помощи

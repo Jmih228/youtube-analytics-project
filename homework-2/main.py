@@ -1,4 +1,6 @@
-from src.channel import Channel
+import sys
+sys.path.append(r'C:\Users\Hp\PycharmProjects\section4hw1\youtube-analytics-project/src')
+from channel import Channel
 
 if __name__ == '__main__':
     moscowpython = Channel('UC-OVMPlMA3-YCIeg4z5z23A')
@@ -11,6 +13,7 @@ if __name__ == '__main__':
     # менять не можем
     moscowpython.channel_id = 'Новое название'
     # AttributeError: property 'channel_id' of 'Channel' object has no setter
+    # Кейс возвращает другую ошибку "AttributeError: can't set attribute", но требованию "менять не можем" отвечает
 
     # можем получить объект для работы с API вне класса
     print(Channel.get_service())
@@ -18,3 +21,5 @@ if __name__ == '__main__':
 
     # создаем файл 'moscowpython.json' в данными по каналу
     moscowpython.to_json('moscowpython.json')
+
+    print(moscowpython.channel_id)
