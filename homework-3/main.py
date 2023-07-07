@@ -1,4 +1,6 @@
-from src.channel import Channel
+import sys
+sys.path.append(r'../src')
+from channel import Channel
 
 if __name__ == '__main__':
     # Создаем два экземпляра класса

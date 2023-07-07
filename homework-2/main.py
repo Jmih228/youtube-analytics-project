@@ -1,5 +1,5 @@
 import sys
-sys.path.append(r'C:\Users\Hp\PycharmProjects\section4hw1\youtube-analytics-project/src')
+sys.path.append(r'../src')
 from channel import Channel
 
 if __name__ == '__main__':

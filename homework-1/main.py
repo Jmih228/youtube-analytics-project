@@ -1,5 +1,5 @@
 import sys
-sys.path.append(r'C:\Users\Hp\PycharmProjects\section4hw1\youtube-analytics-project/src')
+sys.path.append(r'../src')
 from channel import Channel
 # такой усложненный импорт из-за того, что простое src.item мой пайчарм почему-то не видит
 
