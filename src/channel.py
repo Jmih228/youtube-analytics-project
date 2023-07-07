@@ -40,6 +40,10 @@ class Channel:
 
     def __ge__(self, other):
         return int(self.subscribers) >= int(other.subscribers)
+
+    def __eq__(self, other):
+        return int(self.subscribers) == int(other.subscribers)
+
     @property
     def channel_id(self):
         return self.__channel_id
