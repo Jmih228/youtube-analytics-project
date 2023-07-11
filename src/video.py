@@ -16,7 +16,7 @@ class Video:
         self. likes_count = json_format['items'][0]['statistics']['likeCount']
 
     def __str__(self):
-        return self.video_name
+        return self.video_title
 
     @classmethod
     def get_service(cls):
